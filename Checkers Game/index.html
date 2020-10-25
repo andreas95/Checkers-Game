@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="Description" content="Checkers game">
+<title>Checkers game</title>
+<link rel="stylesheet" href="res/style.css">
+<link rel="icon" href="res/favicon.png" sizes="192x192">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+<script src="res/script.js" type="text/javascript"></script>
+<!-- Add fancybox -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+</head>
+
+<body>
+
+<header>
+<div id="game-title" class="noselect">CHECKERS GAME</div>
+<div id="menu" class="noselect">
+<ul>
+<li id="newgame">New Game</li>
+<li  data-fancybox="" data-src="#options" id="optMenu" data-modal="true" href="javascript:;">Options</li>
+<li data-fancybox="" data-src="#rules" data-modal="true" href="javascript:;">Rules</li>
+</ul>
+
+<div id="rules">
+<h2>RULES</h2>
+<p>Checkers is a classic board game, dating back to around 3000 BC. It is very simple, but a lot of fun! Checkers is known as Draughts in England and there are multiple variations of it all around the world. The game is played on an 8x8 chequered board, essentially a chess board. Each player starts with 12 pieces, placed on the dark squares of the board closest to them. The objective of the game is to capture all the opponent's pieces by jumping over them.</p>
+<h2>GAMEPLAY</h2>
+<p>Pieces can only move diagonally on the dark squares, the light squares of the board are never used. A normal move is moving a piece diagonally forward one square. The initial pieces can only move forward diagonally, not backwards. You cannot move onto a square that is occupied by another piece. However, if an opponent piece is on the square diagonally in front of you and the square behind it is empty then you can (and must!) jump over it diagonally, thereby capturing it. If you land on a square where you can capture another opponent piece you must jump over that piece as well, immediately. One turn can capture many pieces. It is required to jump over pieces whenever you can.</p>
+<p>If a piece reaches the end row of the board, on the opponent's side, it becomes a King. Kings can move diagonally forwards and backwards, making them more powerful in jumping over opponent pieces. However, if you jump over a piece to become a King you can not jump backwards over another piece in the same move, you have to wait until the next turn to start moving backwards.</p>
+<p>Jumping over opponents is required. However, if you have two possible moves, where one jumps over one opponent and the other jumps over two or more opponents you are not required to take the jump with the most opponents captured, you are just required to take any jump move.</p>
+<h2>WINNING</h2>
+<p>The game can end in four different ways:
+<ol>
+<li>If a player has lost all his pieces he loses.</li>
+<li>If a player can't move at all, all his pieces are blocked, he loses.</li>
+<li>The exact same board state has come up three times without any men captured in between. The game ends in a draw. This is to avoid situation with two pieces left just moving around never being able to capture each other.</li>
+<li>There have been 100 moves (50 for each player) with no piece captured. The game ends in a draw.</li>
+</ol></p>
+<button type="button" data-fancybox-close="" class="fancybox-button fancybox-close-small" title="Close"><svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg></button>
+</div>
+
+<form id="options" action="" method="post" class="noselect">
+   <h2>OPTIONS</h2>
+   <table>
+	<tr>
+		<td><span class="title">Game mode:</span></td>
+		<td><label for="modeM" title="Multiplayer">     <input type="radio" id="modeM" name="radio">     <span class="rdo"></span>     <span>Multiplayer</span>   </label> 		<label for="modeC" title="Computer">     <input type="radio" id="modeC" name="radio">     <span class="rdo"></span>     <span>Computer</span>   </label></td>
+	</tr>
+	<tr>
+		<td><span class="title">Preferred color:</span></td>
+		<td><div class="custom-radios" title="Random">   <div>     <input type="radio" id="color-1" name="color" value="color-1">     <label for="color-1">       <span>         <img src="res/check-icn.svg" alt="Checked Icon" />       </span>     </label>   </div>     <div title="Red">     <input type="radio" id="color-2" name="color" value="color-2">     <label for="color-2">       <span>         <img src="res/check-icn.svg" alt="Checked Icon" />       </span>     </label>   </div>     <div title="Black">     <input type="radio" id="color-3" name="color" value="color-3">     <label for="color-3">       <span>         <img src="res/check-icn.svg" alt="Checked Icon" />       </span>     </label>   </div> </div></td>
+	</tr>
+	<tr>
+		<td><span class="title">Player #1 name:</span></td>
+		<td><span class="input"> 		<input type="text" value="Player 1" id="p1Name"> 		<span></span>	 	</span></td>
+	</tr>
+	<tr>
+		<td><span class="title">Player #2 name:</span></td>
+		<td><span class="input">	<input type="text" value="Player 2" id="p2Name"> 		<span></span>	 	</span></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: center;"><input data-fancybox-close="" type="button" class="btn-save" value="Save"></td>
+   </table> 
+   
+    <button type="button" data-fancybox-close="" class="fancybox-button fancybox-close-small" title="Close"><svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg></button>
+</form>
+
+</div>
+</header>
+
+<div id="board">
+<span class="player-text"><span id="p1text">Player 1</span> (you)</span>
+
+<div id="game-board">
+<div id="board-iner">
+<div class="table">
+<!-- Insert table rows -->
+</div>
+</div>
+</div>
+
+<span class="player-text"><span id="p2text">Player 2</span> (opponent)</span>
+
+<div id="message-box">Tips: <span>Now click the square you want to move to.</span></div>
+</div>
+
+</body>
+
+</html>
+

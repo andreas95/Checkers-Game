@@ -1,0 +1,561 @@
+body {
+	margin: 0;
+	background-image: url(starwars.png);
+	background-color: #000;
+	color: #ffe81f;
+    padding: 5px;	
+	font-size: 14pt;
+}
+
+#board {
+	margin: 0 auto;
+	width: 600px;
+	text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;	
+}
+
+header {
+    margin: 0 auto;
+    width: 500px;
+	padding: 15px 10px 40px 10px;
+}
+
+#game-title {
+	-webkit-text-stroke: 2px #ffe81f!important;
+    -moz-text-stroke: 2px #ffe81f;
+    line-height: 44px;
+    height: 71px;
+    white-space: nowrap;
+    font-family: 'Arial Black',AvenirNext-Heavy,'Roboto Black','Arial Bold',Arial,sans-serif;
+    font-weight: 900;
+    color: #000;
+    font-size: 50px;	
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+#menu {
+	text-align: center;
+	margin-top: 15px;
+
+}
+
+#menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu ul li {
+	display: inline;
+	background: #115252;
+	padding: 8px;
+	border-radius: 10px;
+    font-weight: bold;
+    margin: 3px;	
+}
+
+#menu ul li:hover {
+	cursor: pointer;
+	color: aliceblue;
+	background: #213131;
+}
+
+#game-board {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 90%;
+	margin: 5px auto 5px auto;
+    position: relative;
+    background: url(table.jpg);
+    -webkit-background-size: 64px 64px;
+    -moz-background-size: 64px 64px;
+    -o-background-size: 64px 64px;
+    background-size: 64px 64px;
+    -webkit-box-shadow: #006400 0 0 10px;
+    -moz-box-shadow: #006400 0 0 10px;
+    box-shadow: #006400 0 0 10px;
+    -webkit-background-size: 50% 50%;
+    -moz-background-size: 50%;
+    -o-background-size: 50%;
+    background-size: 50%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 1%;
+    -webkit-background-size: 20% 20%;
+    -moz-background-size: 20%;
+    -o-background-size: 20%;
+    background-size: 20%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #96643c;
+    border-top-color: #9c7752;
+    border-left-color: #9c7752;
+    border-bottom-color: #6b5238;
+    border-right-color: #6b5238;
+}
+
+.player-text {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: #006400 0 0 10px;
+    -moz-box-shadow: #006400 0 0 10px;
+    box-shadow: #006400 0 0 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+	background: url(table.jpg);
+	-webkit-background-size: 64px 64px;
+	-moz-background-size: 64px 64px;
+	-o-background-size: 64px 64px;
+	background-size: 64px 64px;
+	-webkit-background-size: 20% 20%;
+	-moz-background-size: 20%;
+	-o-background-size: 20%;
+	background-size: 20%;
+    padding: 1%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #96643c;
+    border-top-color: #9c7752;
+    border-left-color: #9c7752;
+    border-bottom-color: #6b5238;
+    border-right-color: #6b5238;
+}	
+
+#board-iner {
+	position: relative;
+    padding-bottom: 100%;
+    border: solid 2px #533b30;
+}
+
+.table {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.row {
+    height: 12.5%;
+}
+
+.row div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 12.5%;
+    position: relative;
+    padding-bottom: 12.5%;
+    display: inline-block;
+    background: url(table.jpg);
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+}
+
+.row:nth-child(even) div:nth-child(even), .row:nth-child(odd) div:nth-child(odd) {
+    background: url(matrix.jpg);
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+}
+
+.piece {
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    width: 75%;
+    height: 75%;
+    -webkit-box-shadow: #333 1px 0 2px;
+    -moz-box-shadow: #333 1px 0 2px;
+    box-shadow: #333 1px 0 2px;
+    position: absolute;
+    left: 13%;
+    top: 10%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition-delay: 0;
+    -moz-transition-delay: 0;
+    -o-transition-delay: 0;
+    transition-delay: 0;
+    -webkit-transition: left .3s ease-out,top .3s ease-out,opacity .4s;
+    -o-transition: left .3s ease-out,top .3s ease-out,opacity .4s;
+    -moz-transition: left .3s ease-out,top .3s ease-out,opacity .4s;
+    transition: left .3s ease-out,top .3s ease-out,opacity .4s;
+}
+
+.piece.red {
+    background: #d00;
+    border-color: #a00;	
+}
+
+.piece.black {
+	background: #333;
+    border-color: #000;	
+}
+
+.piece.active {
+	cursor: pointer;
+	border-color: #ff0!important;
+    -webkit-box-shadow: #ff0 0 0 10px;
+    -moz-box-shadow: #ff0 0 0 10px;
+    box-shadow: #ff0 0 0 10px;	
+}
+
+.piece.selected {
+    cursor: pointer;	
+    border-color: #fff!important;
+    -webkit-box-shadow: #fff 0 0 10px;
+    -moz-box-shadow: #fff 0 0 10px;
+    box-shadow: #fff 0 0 10px;
+}
+
+#rules {
+	color: #b9b9b9;
+	background: #222;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	display: none;
+	max-width: 1000px;
+	font-size: 13pt;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#rules h2 {
+	text-align: center;
+}
+
+#options {
+	display: none;
+	max-width: 700px;
+	width: 100%;
+	background-image: url(starwars.png);
+	background-color: #000;
+	color: #ffe81f;
+	padding-top: 10px;
+    text-align: center;	
+}	
+
+#options h2 {
+    -webkit-text-stroke: 2px #ffe81f!important;
+    -moz-text-stroke: 2px #ffe81f;
+    height: 71px;
+    white-space: nowrap;
+    font-family: 'Arial Black',AvenirNext-Heavy,'Roboto Black','Arial Bold',Arial,sans-serif;
+    color: #000;	
+}
+
+#options .title {
+	text-shadow: 1px 1px #FF0000;
+    font-weight: bold;
+	margin-right: 30px;
+}
+
+#options table {
+	margin: 0 auto;
+}
+
+#options table td {
+	text-align: left;
+	padding: 10px;
+}
+
+.btn-save {
+	margin-top: 15px;
+	width: 100px;
+	height: 36px;
+	border-radius: 18px;
+	background-color: #1c89ff;
+	border: solid 1px transparent;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 300;
+	cursor: pointer;
+	-webkit-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+
+.btn-save:hover {
+	background: #007aff;
+}
+
+.btn-save:focus {
+	outline: none;
+}
+
+.input {
+  position: relative;
+  font-size: 1em;
+  background: linear-gradient(21deg, #10abff, #1beabd);
+  padding: 2px;
+  display: inline-block;
+  border-radius: 9999em;
+}
+.input *:not(span) {
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.5;
+  font-size: 1em;	
+  position: relative;
+  display: inherit;
+  border-radius: inherit;
+  margin: 0;
+  border: none;
+  outline: none;
+  padding: 0 .325em;
+  z-index: 1;
+}
+.input *:not(span):focus + span {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.input span {
+  -webkit-transform: scale(0.993, 0.94);
+          transform: scale(0.993, 0.94);
+  -webkit-transition: opacity .25s, -webkit-transform .5s;
+  transition: opacity .25s, -webkit-transform .5s;
+  transition: transform .5s, opacity .25s;
+  transition: transform .5s, opacity .25s, -webkit-transform .5s;
+  opacity: 0;
+  position: absolute;
+  z-index: 0;
+  margin: 4px;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 3px #fff, 0 0 0 4px #fff, 3px -3px 30px #1beabd,  -3px 3px 30px #10abff;
+}
+
+input {
+  font-family: inherit;
+  line-height: inherit;
+  color: #2e3750;
+}
+
+::-webkit-input-placeholder {
+  color: #cbd0d5;
+}
+
+::-moz-placeholder {
+  color: #cbd0d5;
+}
+
+:-ms-input-placeholder {
+  color: #cbd0d5;
+}
+
+::-ms-input-placeholder {
+  color: #cbd0d5;
+}
+
+::placeholder {
+  color: #cbd0d5;
+}
+
+html::after {
+  content: '';
+  background: linear-gradient(21deg, #10abff, #1beabd);
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+.custom-radios div {
+  display: inline-block;
+}
+.custom-radios input[type="radio"] {
+  display: none;
+}
+.custom-radios input[type="radio"] + label {
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+.custom-radios input[type="radio"] + label span {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  line-height: 35px;
+}
+.custom-radios input[type="radio"] + label span img {
+  opacity: 0;
+  transition: all .3s ease;
+}
+.custom-radios input[type="radio"]#color-1 + label span {
+	background: linear-gradient(90deg, #d00 50%, #333 50%);
+	border-color: #a00;
+	
+}
+.custom-radios input[type="radio"]#color-2 + label span {
+  background-color: #d00;
+  border-color: #a00;
+}
+.custom-radios input[type="radio"]#color-3 + label span {
+  background-color: #333;
+  border-color: #505050;
+}
+.custom-radios input[type="radio"]:checked + label span img {
+  opacity: 1;
+}
+
+form div {
+	display: inline-block;
+}
+
+.rdo {
+  position: relative;
+  display: block;
+  float: left;
+  width: 18px;
+  height: 18px;
+  border-radius: 10px;
+  background-color: #606062;
+  background-image: linear-gradient(#474749, #606062);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.15), inset 0 -1px 1px rgba(0,0,0,0.15);
+  transition: all 0.15s ease;
+}
+
+.rdo:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 6px;
+  left: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.rdo + span {
+  float: left;
+  margin-left: 6px;
+}
+
+form {
+  margin: auto;
+  user-select: none;
+}
+
+form label {
+	display: inline-block;
+	margin: 0 10px 0 10px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+form input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+form input[type="radio"]:checked + .rdo {
+  background-color: #606062;
+  background-image: linear-gradient(#255cd2, #1d52c1);
+}
+
+form input[type="radio"]:checked + .rdo:after {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.15s ease;
+}
+
+.fancybox-button svg {
+	color: whitesmoke !important;
+    height: 125% !important;
+	width: 125% !important;
+}
+
+#message-box {
+    width: 80%;
+    padding: 5px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: #2d2d2d;
+    border: 1px solid black;
+    border-radius: 30px;
+    opacity: 0.9;
+    font-weight: bold;	
+}
+
+.move:after {
+	cursor: pointer;
+	content: "";
+    display: block;
+    border: solid 2px #fff;
+    -webkit-box-shadow: #fff 0 0 5px;
+    -moz-box-shadow: #fff 0 0 5px;
+    box-shadow: #fff 0 0 5px;
+    opacity: .8;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    position: absolute;
+    width: 72%;
+    height: 72%;
+    left: 14%;
+    top: 14%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}	
+
+.king:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url(crown.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: 64% 64%;
+    -moz-background-size: 64%;
+    -o-background-size: 64%;
+    background-size: 64%;
+}
